@@ -4,7 +4,7 @@
 个人开发者，只因找不到比较完美的小程序聊天程序，只能自己写。
 关注微信公众号"程序员无名"，一起学习与交流
 
-![430430.jpg](https://cdnjson.com/images/2023/04/03/430430.jpg)
+![430430.jpg](https://wmbyte.oss-cn-shanghai.aliyuncs.com/%E5%85%AC%E4%BC%97%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)
 
 #### 项目介绍
 基于SpringBoot+小程序的一套小程序源码，（欢迎一起改进、学习，欢迎提建议）
