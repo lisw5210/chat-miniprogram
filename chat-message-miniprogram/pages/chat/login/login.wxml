@@ -1,0 +1,5 @@
+<view class="page-body">
+  <view class="btn-area" id="buttonContainer">
+    <button size="small" type="primary" block color="rgba(0, 153, 255, 1)"  open-type="getUserInfo" bindtap="getUserProfile">微信一键登录</button>
+  </view>
+</view>

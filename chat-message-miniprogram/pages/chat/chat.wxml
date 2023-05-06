@@ -1,6 +1,4 @@
 <view class='view-page'>
-  <navbar page-name="{{pageName}}" show-home="{{false}}" show-nav="{{false}}"></navbar>
-  <placeholder></placeholder>
   <view class="comments cu-chat" id="x_chat">
     <scroll-view scroll-y="{{true}}" scroll-with-animation='{{true}}' scroll-into-view="{{toLast}}"
     style="width:100%;height:{{windowHeight}}px;"
@@ -17,7 +15,9 @@
       <view class='messageTime' wx:if="{{item.type === 1}}">{{item.time}}</view>
       <view class="cu-item self" wx:if="{{item.sendId == sendId}}">
         <view class="main">
-          <text wx:if="{{item.requestId!=null}}" class="iconfont icon-sending sending"></text>
+          
+            <image wx:if="{{item.requestId!=null}}" class="sending" src="./login/images/loading.png"></image>
+          
           <view class="{{item.messageType==0?'bg-green':''}} content  shadow">
               <block wx:for="{{item.content}}" wx:key="index" wx:for-item="pro">
                 <block wx:if="{{pro.type === 1}}">{{pro.content}}</block>

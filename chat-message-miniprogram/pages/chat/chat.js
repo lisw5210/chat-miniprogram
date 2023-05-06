@@ -17,7 +17,7 @@ Page({
     pageName:'',//页面名称
     popupFlag:true,
     sendId:0,//当前用户,此处定死实际场景中改为自己业务ID
-    sendOpenId:1111,//当前用户OPENID
+    sendOpenId:'',//当前用户OPENID
     lineHeight: 24,//表情的大小
     receiveId:'',//接受人
     roomId:'',//房间ID 防止串线
@@ -31,7 +31,7 @@ Page({
     emojiShow: false, //表情区是否显示
     paddingBottom:80, //消息内容区距底部的距离
     keyboardHeight:0,//输入框距下边框距离
-    emojiSource: './images/emoji-sprite.png',//表情图片
+    emojiSource: 'http://www.wmbyte.com/img/chat_message_minip/emoji-sprite.png',//表情图片
     windowHeight:0,//聊天内容区的高度
     sendAvatar:'https://lyhl.oss-cn-shanghai.aliyuncs.com/20210530/cbe1b8d05cd74745b058dfcb5961e71d.jpg',//当前用户头像
     receiveAvatar:'',//聊天对象头像
@@ -47,6 +47,15 @@ Page({
    */
 
   onLoad: function (options) {
+    //当前用户OPENID
+    let userInfo = wx.getStorageSync("chat-mini-program-userInfo");
+    userInfo = JSON.parse(userInfo);
+    let openId = userInfo.openId
+    let memberId = userInfo.memberId;
+    this.setData({
+      sendOpenId:openId,
+      sendId:memberId
+    })
     console.log("屏幕高度："+wx.getSystemInfoSync().windowHeight);
     console.log("头高度："+App.globalData.navHeight);
     const receiveOpenId = options.receiveOpenId?options.receiveOpenId:'2222';
@@ -68,9 +77,13 @@ Page({
         console.log(1);
         if (data.data.code == 0) {
           const info = data.data.data;
+          wx.setNavigationBarTitle({
+
+            title:info.name?info.name:info.nickname//页面标题为路由参数
+          })
           _this.setData({
             receiveId:info.id,
-            receiveAvatar:info.avatar,
+            receiveAvatar:App.getMediaURL(info.avatar),
             roomId:(parseInt(sendId))+(parseInt(info.id)),
             pageName:info.name?info.name:info.nickname,
             sendId:sendId
@@ -98,7 +111,7 @@ Page({
            const info = data.data.data;
            _this.setData({
              balance:info.balance?info.balance:0,
-             sendAvatar:info.avatar,
+             sendAvatar:App.getMediaURL(info.avatar),
            },function(){
            })
          }
@@ -112,7 +125,7 @@ Page({
   linkSocket() {
     let that = this
     wx.connectSocket({
-      url: App.globalData.wsBaseAPI+`webSocketOneToOne/${this.data.sendId}/${this.data.roomId}`,
+      url: App.globalData.wsBaseAPI+`webSocketOneToOne/${that.data.sendId}/${that.data.roomId}`,
       success() {
         socketOpen = true;
         that.initEventHandle()
@@ -219,8 +232,8 @@ Page({
     },function(){
 
         this.setData({
-          keyboardHeight:this.data.emojiShow?300:0,
-          paddingBottom:this.data.emojiShow?300:80
+          keyboardHeight:(this.data.emojiShow==true)?300:0,
+          paddingBottom:(this.data.emojiShow==true)?300:80
         },function(){
           this.getScollBottom();
         })
@@ -319,7 +332,7 @@ Page({
           if(res.statusCode===200){
             console.log("文件上传成功"+JSON.stringify(res));
             const data = JSON.parse(res.data);
-            obj.content = data.url;
+            obj.content = App.getMediaURL(data.url);
             that.sendSocket(obj);
           }
         }
@@ -535,7 +548,9 @@ Page({
             if(obj.messageType === this.data.typeToCode.text){
               obj.content = JSON.parse(obj.content);
             }else if(obj.messageType === this.data.typeToCode.image){
-                array.unshift(obj.content);
+                let url = App.getMediaURL(obj.content);
+                array.unshift(url);
+                obj.content = url;
             }
             this.setData({imgList:array})
             obj.sendId = obj.sender

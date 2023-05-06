@@ -1,0 +1,14 @@
+<view class="container1">
+  <view class="header" >
+    <view class="avatar">
+      <button open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+      <image src="{{avatarUrl}}" mode="aspectFit"></image></button>
+    </view>
+    <view class="info">
+      <input bindblur="updateNickName" type="nickname" style="background-color: #666666;" class="weui-input" value="{{nickName}}" placeholder="请输入昵称"/>
+    </view>
+  </view>
+    <view style="margin-top:20px;text-align: center;font-size: 14px;color:#666666">
+      为了更好的体验，可点击头像或昵称，进行更换
+    </view>
+</view>

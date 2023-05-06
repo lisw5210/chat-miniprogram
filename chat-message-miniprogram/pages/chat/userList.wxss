@@ -27,9 +27,10 @@
   cursor: pointer;
 }
 .item .poster {
-  width: 128rpx;
-  height: 128rpx;
+  width: 100rpx;
+  height: 100rpx;
   margin-right: 20rpx;
+  border-radius: 20rpx;
 }
 .item .meta {
   flex: 1;

@@ -1,14 +1,33 @@
 {
-  "pages":[
+  "pages": [
+    "pages/userinfo/index",
     "pages/chat/userList",
+    "pages/chat/login/login",
     "pages/chat/chat"
+    
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "lazyCodeLoading": "requiredComponents",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/chat/userList",
+      "text": "通讯录",
+      "iconPath": "/pages/chat/images/icon/address-book.png",
+      "selectedIconPath": "/pages/chat/images/icon/address-book-active.png" 
+      
+    }, {
+      "pagePath": "pages/userinfo/index",
+      "text": "我",
+      "iconPath": "/pages/chat/images/icon/avatar.png",
+      "selectedIconPath": "/pages/chat/images/icon/avatar-active.png"
+    }]
+  }
 }

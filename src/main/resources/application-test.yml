@@ -4,8 +4,8 @@ spring:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://xxxxxx:3306/message?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-      username: xxx
-      password: xxxx
+      username: xxxx
+      password: xxxxx
       initial-size: 10
       max-active: 100
       min-idle: 10
@@ -35,7 +35,7 @@ spring:
 # 小程序配置
 miniprogram:
   appId: xxxx
-  appSecret: xxxxxx
+  appSecret: xxxx
 oss:
   aliyunBucketName:
   aliyunAccessKeySecret:
@@ -44,7 +44,7 @@ oss:
   aliyunPrefix:
   aliyunDomain:
 local:
-  filePath: /Users/lisw/Downloads/img/ #如果配置了该路径，则上传的图片上传到本地，不在使用oss
+  filePath: /mydata/img/ #如果配置了该路径，则上传的图片上传到本地，不在使用oss
 logging:
   level:
     com.example.gradle.mapper: debug

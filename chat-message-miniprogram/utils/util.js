@@ -68,39 +68,39 @@ const post=function(url,params){
 const postNoLoading=function(url,params){
   return request('POST',url,params,{'Content-Type': 'application/json'},false)
 }
-const loadLocation=function(){
-  return new Promise((resolve, reject)=>{
-    let address=wx.getStorageSync('ly-user-address')
-    let isLoad=true
-    if(address){
-      isLoad=(Date.now()-address.time)>=720000
-    }
-    if(!isLoad){
-      resolve(address)
-    }else{
-      wx.getLocation({
-        type: 'wgs84',
-        success (res) {
-          const latitude = res.latitude
-          const longitude = res.longitude
-         let addressUrl=`https://apis.map.qq.com/ws/geocoder/v1/?location=${latitude},${longitude}&key=7MLBZ-BRLWV-KIFPM-UTP3B-MMUR6-MUFCO`
-         wx.request({
-          url: addressUrl,
-          success: function (result) {
-            if(result&&result.statusCode===200){
-              let city=result.data.result.address_component.city
-              let addressName=result.data.result.address
-              let address={lat:latitude,lon:longitude,city:city,addressName:addressName,time:Date.now()}
-              wx.setStorageSync('ly-user-address',address)
-              resolve(address)
-            }
-          }
-        })
-        }
-       })
-    }
-  })
-}
+// const loadLocation=function(){
+//   return new Promise((resolve, reject)=>{
+//     let address=wx.getStorageSync('ly-user-address')
+//     let isLoad=true
+//     if(address){
+//       isLoad=(Date.now()-address.time)>=720000
+//     }
+//     if(!isLoad){
+//       resolve(address)
+//     }else{
+//       wx.getLocation({
+//         type: 'wgs84',
+//         success (res) {
+//           const latitude = res.latitude
+//           const longitude = res.longitude
+//          let addressUrl=`https://apis.map.qq.com/ws/geocoder/v1/?location=${latitude},${longitude}&key=7MLBZ-BRLWV-KIFPM-UTP3B-MMUR6-MUFCO`
+//          wx.request({
+//           url: addressUrl,
+//           success: function (result) {
+//             if(result&&result.statusCode===200){
+//               let city=result.data.result.address_component.city
+//               let addressName=result.data.result.address
+//               let address={lat:latitude,lon:longitude,city:city,addressName:addressName,time:Date.now()}
+//               wx.setStorageSync('ly-user-address',address)
+//               resolve(address)
+//             }
+//           }
+//         })
+//         }
+//        })
+//     }
+//   })
+// }
 
 const request=function(method,url,params,header,showLoading=true){
   return new Promise((resolve, reject) => {
@@ -119,7 +119,7 @@ const request=function(method,url,params,header,showLoading=true){
           if(data.data.code===0){
             resolve(data.data)
           }else if(data.data.code===401){
-            wx.redirectTo({url: '/pages/register/register'})
+            wx.redirectTo({url: 'pages/chat/login/login'})
           }else{
             wx.showToast({
               title: data.data.msg,
@@ -162,6 +162,6 @@ module.exports = {
   get:get,
   post:post,
   postNoLoading:postNoLoading,
-  loadLocation:loadLocation,
+  // loadLocation:loadLocation,
   getNowAddress:getNowAddress
 }

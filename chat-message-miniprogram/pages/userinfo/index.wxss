@@ -1,0 +1,61 @@
+.container1 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  /* display: flex;
+  flex-direction: row;
+  align-items: center; */
+  padding: 100rpx 20rpx;
+  text-align: center;
+  background-color: #09bb07;
+}
+
+.avatar {
+  /* width: 120rpx;
+  height: 120rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+  overflow: hidden; */
+}
+.avatar image{
+  width: 120rpx;
+  height: 120rpx;
+  /* border-radius: 100%; */
+}
+.avatar button{
+  width: 120rpx;
+  height: 120rpx;
+  padding:0px
+}
+
+.info {
+ 
+  color: #ffffff;
+  margin-top: 20rpx;
+}
+
+.nickname {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.wechat-id {
+  font-size: 28rpx;
+}
+
+.qrcode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+}
+
+.qrcode-text {
+  font-size: 24rpx;
+  color: #fff;
+  margin-top: 10rpx;
+}

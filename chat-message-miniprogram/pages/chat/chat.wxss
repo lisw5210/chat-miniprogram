@@ -367,6 +367,8 @@ page{
 .sending{
   color: #999;
   animation:sending 1s linear infinite;
+  width: 25px;
+  height: 25px;
 }
 @keyframes sending{
   0%{-webkit-transform:rotate(0deg);}
