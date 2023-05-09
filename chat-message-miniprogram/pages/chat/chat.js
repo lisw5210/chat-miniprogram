@@ -38,7 +38,7 @@ Page({
     limit:1,//重连次数
     imgList:[],//聊天记录中的图片数组
     pageNo:1, //聊天记录页码
-    pageSize:2,
+    pageSize:10,
     isDisConnection:false//是否是手动断开锻炼
   },
   /**
@@ -291,6 +291,9 @@ Page({
   },
   //消息发送前的处理
   onsend(type,message) {
+
+
+
     const obj = {};
     obj.content = message; //消息内容
     obj.requestId = util.wxuuid(); //消息请求ID，用于消息是否发送成功，去除菊花
@@ -303,7 +306,10 @@ Page({
     if(this.data.list && this.data.list.length>0){
       obj.lastMessageTime = this.data.list[this.data.list.length-1].time;
     }
-  
+    if(!socketOpen){
+      //如果链接没打开，则打开链接
+      this.linkSocket()
+    }
 
     //消息先加入聊天区域，此时菊花是转的
     this.data.list.push(obj);
