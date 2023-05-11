@@ -5,6 +5,8 @@
 
 ### 关注微信公众号"程序员无名"，回复【聊天】可体验该聊天小程序。
 
+### 感谢支持，给予点个"Star吧"
+
 
 ![430430.jpg](http://www.wmbyte.com/img/wechat_qrcode_mp.jpg)
 
