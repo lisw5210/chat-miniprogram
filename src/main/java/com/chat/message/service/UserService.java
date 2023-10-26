@@ -8,5 +8,5 @@ import java.util.Map;
 
 public interface UserService extends IService<User> {
 
-    List<User> getMyFriends(String openId);
+    List<User> getMyFriends(Long userId);
 }

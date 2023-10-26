@@ -58,7 +58,10 @@ public class MobileApiController {
     @GetMapping("/getMemberList/{openId}")
     public R getMemberList(@PathVariable String openId) {
         try {
-            List<User> userList = userService.getMyFriends(openId);
+            LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper();
+            lambdaQueryWrapper.eq(User::getOpenId,openId);
+            User one = userService.getOne(lambdaQueryWrapper, false);
+            List<User> userList = userService.getMyFriends(one.getId());
             if (userList != null) {
                 return R.ok().put("data", userList);
             }

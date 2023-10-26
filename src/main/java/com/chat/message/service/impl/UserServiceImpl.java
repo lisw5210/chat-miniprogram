@@ -22,9 +22,9 @@ import java.util.Map;
 @Slf4j
 public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserService {
     @Override
-    public List<User> getMyFriends(String openId) {
+    public List<User> getMyFriends(Long userId) {
         Map<String,Object> params = new HashMap<>();
-        params.put("openId",openId);
+        params.put("userId",userId);
         return this.baseMapper.getMyFriends(params);
     }
 }

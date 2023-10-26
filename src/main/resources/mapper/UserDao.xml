@@ -17,38 +17,37 @@
             USER a
                 LEFT JOIN (
                 SELECT
-                    seu.open_id,
+                    m.sender sender,
                     count( 1 ) nums
                 FROM
                     message m
-                        INNER JOIN `user` reu ON m.receiver = reu.id
-                        INNER JOIN `user` seu ON m.sender = seu.id
+
                 WHERE
-                    reu.open_id = #{openId}
+                    m.receiver = #{userId}
                   AND m.is_read = 0
                 GROUP BY
-                    seu.open_id
-            ) b ON a.open_id = b.open_id
+                    m.sender
+            ) b ON a.id = b.sender
                 LEFT JOIN (
                 SELECT
-                    seu.open_id,
+                    case when m.sender = #{userId} then receiver
+                         else sender
+                        end userId,
                     max( created_time ) maxContentTime
                 FROM
                     message m
-                        INNER JOIN `user` reu ON m.receiver = reu.id
-                        INNER JOIN `user` seu ON m.sender = seu.id
                 WHERE
-                    reu.open_id = #{openId}
+                    m.sender = #{userId} or m.receiver =#{userId}
                 GROUP BY
-                    seu.open_id
-            ) c ON a.open_id = c.open_id
-                LEFT JOIN message d ON d.sender = a.id
-                AND d.created_time = c.maxContentTime
+                    case when m.sender =#{userId} then receiver
+                         else sender
+                        end
+            ) c ON a.id = c.userId
+                left join message d on d.created_time = c.maxContentTime and ( (d.sender = c.userId and d.receiver = #{userId}) or (d.sender = #{userId} and d.receiver = c.userId)  )
         WHERE
-            ( a.open_id != #{openId} )
+            ( a.id != #{userId} )
         ORDER BY
-            a.open_id = 'oruwK0RHK5JKcsj1jKQ-Z9kABeBA' DESC,
-            b.nums desc,
+            a.id = 6 DESC,
             c.maxContentTime DESC,
             d.content desc
     </select>
