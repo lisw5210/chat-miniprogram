@@ -7,6 +7,10 @@ import com.chat.message.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author lisw
  * @program message
@@ -17,4 +21,10 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserService {
+    @Override
+    public List<User> getMyFriends(String openId) {
+        Map<String,Object> params = new HashMap<>();
+        params.put("openId",openId);
+        return this.baseMapper.getMyFriends(params);
+    }
 }

@@ -8,6 +8,21 @@
   width: 100%;
   border-bottom: 1rpx solid #ccc;
 }
+.avatar{
+  position: relative;
+}
+.avatar span{
+  position: absolute;
+  background-color: red;
+  right: 5px;
+  top:0px;
+  font-size: 14px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  text-align: center;
+  color:#fff;
+}
 .page-title {
   padding: 20rpx 40rpx;
   color: #999;
@@ -35,6 +50,9 @@
 .item .meta {
   flex: 1;
 }
+.biaoqingclass{
+  display: inline;
+}
 .item .meta .title,.item .meta .sub-title {
   display: block;
   margin-bottom: 15rpx;
@@ -43,7 +61,7 @@
   font-size: 32rpx;
 }
 .item .meta .sub-title {
-  font-size: 22rpx;
+  font-size: 30rpx;
   color: #c0c0c0;
 }
 .item .meta .artists {

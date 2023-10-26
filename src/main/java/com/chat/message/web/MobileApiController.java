@@ -58,9 +58,7 @@ public class MobileApiController {
     @GetMapping("/getMemberList/{openId}")
     public R getMemberList(@PathVariable String openId) {
         try {
-            QueryWrapper queryWrapper = new QueryWrapper();
-            queryWrapper.ne("open_id",openId);
-            List<User> userList = userService.list(queryWrapper);
+            List<User> userList = userService.getMyFriends(openId);
             if (userList != null) {
                 return R.ok().put("data", userList);
             }

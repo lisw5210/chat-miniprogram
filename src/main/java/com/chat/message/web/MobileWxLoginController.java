@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 /**
  * @author lisw
  * @program wuming-SpringBoot+Mybatis仿微信聊天小程序
@@ -52,6 +54,7 @@ public class MobileWxLoginController {
                     one.setOpenId(openid);
                     one.setAvatar("https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0");
                     one.setName("微信用户");
+                    one.setCreateTime(new Date());
                     userService.save(one);
                 }
                 rtnJson.put("memberId",one.getId());

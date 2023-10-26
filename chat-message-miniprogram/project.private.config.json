@@ -3,7 +3,7 @@
   "projectname": "chat-message-miniprogram",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": true
+    "urlCheck": false
   },
   "libVersion": "2.31.0"
 }

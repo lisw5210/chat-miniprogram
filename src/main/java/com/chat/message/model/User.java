@@ -1,9 +1,12 @@
 package com.chat.message.model;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author lisw
@@ -23,4 +26,15 @@ public class User implements Serializable {
     private String avatar;
 
     private String openId;
+
+    private Date createTime;
+
+    @TableField(exist = false)
+    private Integer nums;
+    @TableField(exist = false)
+    private Date maxContentTime;
+    @TableField(exist = false)
+    private String content;
+    @TableField(exist = false)
+    private Integer contentType;
 }

@@ -34,10 +34,10 @@ App({
     navHeight:0,
     //后端api服务，该地址为作者的线上地址，如果连本地，则修改成本地服务即可
     baseAPI: 'https://www.wmbyte.com/message-server/',
-    //baseAPI: 'http://192.168.50.131:9999/message-server/',
+    //baseAPI: 'http://127.0.0.1:9999/message-server/',
     //后端ws服务，该地址为作者的线上地址，如果连本地，则修改成本地服务即可
     wsBaseAPI: 'wss://www.wmbyte.com/message-server/',
-    //wsBaseAPI: 'ws://192.168.50.131:9999/message-server/',
+    //wsBaseAPI: 'ws://127.0.0.1:9999/message-server/',
   },
   getMediaURL(obj){
     //如果以http开头，则直接返回，否则拼接baseAPI

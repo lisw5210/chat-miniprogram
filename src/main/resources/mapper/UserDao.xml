@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chat.message.dao.UserDao">
+
+
+    <select id="getMyFriends" parameterType="java.util.Map" resultType="com.chat.message.model.User">
+        SELECT
+            a.id,
+            a.NAME,
+            a.avatar,
+            a.open_id,
+            a.create_time,
+            IFNULL( b.nums, 0 ) nums,
+            c.maxContentTime,
+            d.content,d.content_type contentType
+        FROM
+            USER a
+                LEFT JOIN (
+                SELECT
+                    seu.open_id,
+                    count( 1 ) nums
+                FROM
+                    message m
+                        INNER JOIN `user` reu ON m.receiver = reu.id
+                        INNER JOIN `user` seu ON m.sender = seu.id
+                WHERE
+                    reu.open_id = #{openId}
+                  AND m.is_read = 0
+                GROUP BY
+                    seu.open_id
+            ) b ON a.open_id = b.open_id
+                LEFT JOIN (
+                SELECT
+                    seu.open_id,
+                    max( created_time ) maxContentTime
+                FROM
+                    message m
+                        INNER JOIN `user` reu ON m.receiver = reu.id
+                        INNER JOIN `user` seu ON m.sender = seu.id
+                WHERE
+                    reu.open_id = #{openId}
+                GROUP BY
+                    seu.open_id
+            ) c ON a.open_id = c.open_id
+                LEFT JOIN message d ON d.sender = a.id
+                AND d.created_time = c.maxContentTime
+        WHERE
+            ( a.open_id != #{openId} )
+        ORDER BY
+            a.open_id = 'oruwK0RHK5JKcsj1jKQ-Z9kABeBA' DESC,
+            b.nums desc,
+            c.maxContentTime DESC,
+            d.content desc
+    </select>
+
+</mapper>

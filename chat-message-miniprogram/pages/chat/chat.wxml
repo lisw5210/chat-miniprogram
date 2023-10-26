@@ -23,7 +23,7 @@
                 <block wx:if="{{pro.type === 1}}">{{pro.content}}</block>
                 <view
                   wx:if="{{pro.type === 2}}"
-                  style="display: inline-block; width: {{lineHeight}}px; height: {{lineHeight}}px">
+                  style=" width: {{lineHeight}}px; height: {{lineHeight}}px">
                   <view
                     class="{{pro.imageClass}}"
                     style="background-image: url({{emojiSource}});transform-origin: 0 0; transform: scale({{lineHeight / 64}});"></view>
@@ -45,7 +45,7 @@
                 <block wx:if="{{pro.type === 1}}">{{pro.content}}</block>
                 <view
                   wx:if="{{pro.type === 2}}"
-                  style="display: inline-block; width: {{lineHeight}}px; height: {{lineHeight}}px">
+                  style="width: {{lineHeight}}px; height: {{lineHeight}}px">
                   <view
                     class="{{pro.imageClass}}"
                     style="background-image: url({{emojiSource}});transform-origin: 0 0; transform: scale({{lineHeight / 64}});"></view>

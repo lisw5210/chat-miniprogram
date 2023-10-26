@@ -12,10 +12,24 @@
     <!--类型判断,显示不同的数据-->
     <block>
         <view class='item'  bindtap="chat" data-openId='{{item.openId}}' data-id='{{item.id}}'>
-          <image class='poster' src='{{item.avatar}}'></image>
-          <view class='meta'>
+          <view class="avatar">
+            <image class='poster' src='{{item.avatar}}'>
+          </image>
+          <span wx:if="{{item.nums>0}}">{{item.nums}}</span>
+          </view>
+          
+          <view class='meta' style="position: relative;overflow: hidden;">
             <text class='title'>{{item.name}}</text>
-            <!-- <text class='sub-title'>签名签名签名签名签名签名</text> -->
+
+              <view wx:if="{{item.contentType == 0}}" style="overflow:hidden;white-space: nowrap;text-overflow:ellipsis;color:#ccc">
+              <block wx:for="{{item.content}}" wx:key="index" wx:for-item="pro">
+                <block>{{pro.content}}</block>
+              </block>
+            </view>
+            <view class="sub-title" wx:if="{{item.contentType == 1}}">图片</view>
+
+            <view style="position: absolute;color: #ccc; right: 0px; top: 0px;">{{item.maxContentTime}}</view>
+
           </view>
         </view>
     </block>
