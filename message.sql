@@ -101,4 +101,7 @@ INSERT INTO `user` VALUES (4, '一个好人', 'https://img0.baidu.com/it/u=20851
 INSERT INTO `user` VALUES (5, '江湖救急', 'https://img1.baidu.com/it/u=742348601,1159540008&fm=26&fmt=auto', '5555');
 COMMIT;
 
+ALTER TABLE message.`user` ADD create_time datetime NULL COMMENT '创建时间';
+COMMIT;
+
 SET FOREIGN_KEY_CHECKS = 1;
