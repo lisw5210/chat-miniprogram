@@ -8,7 +8,7 @@
 ### 感谢支持，给予点个"Star吧"
 
 
-![430430.jpg](http://www.wmbyte.com/img/wechat_qrcode_mp.jpg)
+![430430.jpg](qrcode_for_gh_487c966039d9_258 (1).jpg)
 
 #### 项目介绍
 基于SpringBoot+小程序的一套小程序源码，（欢迎一起改进、学习，欢迎提建议）
@@ -59,8 +59,8 @@
 
 ### 演示截图
 
-![输入图片说明](https://www.wmbyte.com/img/chat_message_minip/address-book1.jpeg)
+![输入图片说明](https://47.115.221.249/img/chat_message_minip/address-book1.jpeg)
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/1103/141820_d7ffe8e7_601463.png "屏幕截图.png")
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/1103/142034_05ff162c_601463.png "屏幕截图.png")
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/1103/142045_6b045ecf_601463.png "屏幕截图.png")
-![输入图片说明](https://www.wmbyte.com/img/chat_message_minip/person-center.jpeg)
+![输入图片说明](https://47.115.221.249/img/chat_message_minip/person-center.jpeg)
