@@ -31,7 +31,7 @@ Page({
     emojiShow: false, //表情区是否显示
     paddingBottom:80, //消息内容区距底部的距离
     keyboardHeight:0,//输入框距下边框距离
-    emojiSource: 'http://www.wmbyte.com/img/chat_message_minip/emoji-sprite.png',//表情图片
+    emojiSource: 'http://47.115.221.249/img/chat_message_minip/emoji-sprite.png',//表情图片
     windowHeight:0,//聊天内容区的高度
     sendAvatar:'https://lyhl.oss-cn-shanghai.aliyuncs.com/20210530/cbe1b8d05cd74745b058dfcb5961e71d.jpg',//当前用户头像
     receiveAvatar:'',//聊天对象头像
